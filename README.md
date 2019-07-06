@@ -1,2 +1,2 @@
 # Typeracer-Bot
-A customizable Typeracer Bot using Selenium. Work in progress
+A customizable Typeracer Bot using Selenium. Work in progress.
