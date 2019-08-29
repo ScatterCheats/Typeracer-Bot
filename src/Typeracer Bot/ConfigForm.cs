@@ -37,42 +37,59 @@ namespace Typeracer_Bot
                 options.AddExcludedArguments(new List<string>() { "enable-automation" });
                 options.AddArguments("--disable-extensions");
                 options.PageLoadStrategy = PageLoadStrategy.None;
+                chrome = new ChromeDriver(driverBuilder, options);
 
             }
-            catch (ArgumentException)
+            catch (WebDriverException)
             {
-               
-
-                options = new ChromeOptions();
-            notfound:
-                MessageBox.Show("Chrome not found. Please specify your Google Chrome Path.", "Error", MessageBoxButtons.OK);
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Chrome Binary|chrome.exe";
-                ofd.InitialDirectory = "C:\\";
-                if(ofd.ShowDialog() == DialogResult.OK)
-                {
-                    options.BinaryLocation = ofd.FileName;
-                }
-                else
-                {
-                    goto notfound;
-                }
-                options.AddArgument("--start-maximized");
-                options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
-                options.AddExcludedArguments(new List<string>() { "enable-automation" });
-                options.AddArguments("--disable-extensions");
-                options.PageLoadStrategy = PageLoadStrategy.None;
-
-                driverBuilder = ChromeDriverService.CreateDefaultService(Directory.GetCurrentDirectory());
-                driverBuilder.HideCommandPromptWindow = true;
+                DriverCustomPath();
+            }
+            catch(ArgumentException)
+            {
+                DriverCustomPath();
             }
             catch
             {
                 MessageBox.Show("Unknown Error occured");
-                Application.Exit();
+                Environment.Exit(1);
             }
-            chrome = new ChromeDriver(driverBuilder, options);
+            
             botThread_obj = new BotThread(chrome);
+        }
+
+        private void DriverCustomPath()
+        {
+
+            ChromeDriverService driverBuilder = null;
+            ChromeOptions options = null;
+            options = new ChromeOptions();
+        notfound:
+            if (MessageBox.Show("Chrome not found. Please specify your Google Chrome Path.", "Error", MessageBoxButtons.OK) == DialogResult.No) Environment.Exit(1);
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Chrome Binary|chrome.exe";
+            ofd.InitialDirectory = "C:\\";
+            DialogResult dr = ofd.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                options.BinaryLocation = ofd.FileName;
+            }
+            else if(dr == DialogResult.Cancel)
+            {
+                Environment.Exit(1);
+            }
+            else
+            {
+                goto notfound;
+            }
+            options.AddArgument("--start-maximized");
+            options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
+            options.AddExcludedArguments(new List<string>() { "enable-automation" });
+            options.AddArguments("--disable-extensions");
+            options.PageLoadStrategy = PageLoadStrategy.None;
+
+            driverBuilder = ChromeDriverService.CreateDefaultService(Directory.GetCurrentDirectory());
+            driverBuilder.HideCommandPromptWindow = true;
+            chrome = new ChromeDriver(driverBuilder, options);
         }
 
         private void ConfigForm_FormClosing(object sender, FormClosingEventArgs e)
