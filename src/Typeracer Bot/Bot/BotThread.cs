@@ -10,7 +10,7 @@ namespace Typeracer_Bot.Bot
     public class BotThread
     {
         private ChromeDriver webDriver;
-        
+        bool accountPopupClosed = false;
 
         public BotThread(ChromeDriver driver)
         {
@@ -33,6 +33,7 @@ namespace Typeracer_Bot.Bot
             FinishRace();
         }
 
+        [Obsolete]
         private void FinishRace()
         { 
             IWebElement inputTextbox = webDriver.FindElement(By.XPath(XPaths.inputTextbox));
@@ -74,6 +75,16 @@ namespace Typeracer_Bot.Bot
                 try
                 {
                     webDriver.FindElement(By.ClassName("raceAgainLink")).Click();
+                    if (!accountPopupClosed)
+                    {
+                        try
+                        {
+                            var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(1));
+                            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[text()='No thanks :(']"))).Click();
+                            accountPopupClosed =true;
+                        }
+                        catch (WebDriverTimeoutException) { }
+                    }
                 }
                 catch (UnhandledAlertException) { }
             }
