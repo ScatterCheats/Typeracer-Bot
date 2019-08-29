@@ -28,3 +28,4 @@ Its pretty simple:
 
 ## Known issues
 - Bot doesn't detect game start when logged in
+- App crashes when changing WPM while its running
