@@ -103,6 +103,7 @@
             this.Name = "ConfigForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Typeracer Bot";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigForm_FormClosing);
             this.Shown += new System.EventHandler(this.ConfigForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.wpmNup)).EndInit();
