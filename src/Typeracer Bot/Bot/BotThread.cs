@@ -2,12 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Typeracer_Bot.Variables;
 
 namespace Typeracer_Bot.Bot
@@ -60,6 +55,7 @@ namespace Typeracer_Bot.Bot
                     inputTextbox.Click();
                 }
                 catch (ElementNotInteractableException) { }
+                catch (UnhandledAlertException) { }
             }
             else
             {
@@ -70,8 +66,17 @@ namespace Typeracer_Bot.Bot
                     inputTextbox.Click();
                 }
                 catch (WebDriverTimeoutException) { }
+                catch (UnhandledAlertException) { }
             }
             Thread.Sleep(300);
+            if (Configuration.autorace)
+            {
+                try
+                {
+                    webDriver.FindElement(By.ClassName("raceAgainLink")).Click();
+                }
+                catch (UnhandledAlertException) { }
+            }
             WaitForRaceStart();
         }
 

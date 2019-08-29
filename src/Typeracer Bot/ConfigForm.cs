@@ -2,13 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Typeracer_Bot.Bot;
 
@@ -33,10 +27,10 @@ namespace Typeracer_Bot
             driverBuilder.HideCommandPromptWindow = true;
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--disable-extensions");
             options.AddArgument("--start-maximized");
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
             options.AddExcludedArguments(new List<string>() { "enable-automation" });
+            options.AddArguments("--disable-extensions");
             options.PageLoadStrategy = PageLoadStrategy.None;
 
             chrome = new ChromeDriver(driverBuilder, options);
@@ -95,6 +89,11 @@ namespace Typeracer_Bot
         private void WpmNup_ValueChanged(object sender, EventArgs e)
         {
             Configuration.wpm = (int)wpmNup.Value;
+        }
+
+        private void AutoraceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration.autorace = autoraceCB.Checked;
         }
     }
 }

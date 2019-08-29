@@ -32,6 +32,7 @@
             this.wpmNup = new System.Windows.Forms.NumericUpDown();
             this.infoLabel1 = new System.Windows.Forms.Label();
             this.instantModeCB = new System.Windows.Forms.CheckBox();
+            this.autoraceCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.wpmNup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +90,23 @@
             this.instantModeCB.UseVisualStyleBackColor = true;
             this.instantModeCB.CheckedChanged += new System.EventHandler(this.InstantModeCB_CheckedChanged);
             // 
+            // autoraceCB
+            // 
+            this.autoraceCB.AutoSize = true;
+            this.autoraceCB.Location = new System.Drawing.Point(81, 85);
+            this.autoraceCB.Name = "autoraceCB";
+            this.autoraceCB.Size = new System.Drawing.Size(69, 17);
+            this.autoraceCB.TabIndex = 5;
+            this.autoraceCB.Text = "Autorace";
+            this.autoraceCB.UseVisualStyleBackColor = true;
+            this.autoraceCB.CheckedChanged += new System.EventHandler(this.AutoraceCB_CheckedChanged);
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 89);
+            this.ClientSize = new System.Drawing.Size(242, 113);
+            this.Controls.Add(this.autoraceCB);
             this.Controls.Add(this.instantModeCB);
             this.Controls.Add(this.infoLabel1);
             this.Controls.Add(this.wpmNup);
@@ -118,6 +131,7 @@
         private System.Windows.Forms.NumericUpDown wpmNup;
         private System.Windows.Forms.Label infoLabel1;
         private System.Windows.Forms.CheckBox instantModeCB;
+        private System.Windows.Forms.CheckBox autoraceCB;
     }
 }
 
