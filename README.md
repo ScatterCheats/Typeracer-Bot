@@ -1,11 +1,11 @@
 # Typeracer-Bot
 
 ## What is this?
-This is a bot for a browser game called [Typeracer]("https://play.typeracer.com"), which will type the text automatically for you.
+This is a bot for a browser game called [Typeracer](https://play.typeracer.com), which will type the text automatically for you.
 
 ## How do I use this?
 Its pretty simple:
-1. Download the newest version from the [release page]("https://github.com/ScatterCheats/Typeracer-Bot/releases/latest")
+1. Download the newest version from the [release page](https://github.com/ScatterCheats/Typeracer-Bot/releases/latest)
 2. Unzip it and run the `Typeracer Bot.exe`
 3. Specify your Chrome path if needed
 5. Set your typing speed
