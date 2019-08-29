@@ -2,12 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Typeracer_Bot.Variables;
 
 namespace Typeracer_Bot.Bot
@@ -15,7 +10,7 @@ namespace Typeracer_Bot.Bot
     public class BotThread
     {
         private ChromeDriver webDriver;
-        
+        bool accountPopupClosed = false;
 
         public BotThread(ChromeDriver driver)
         {
@@ -38,6 +33,7 @@ namespace Typeracer_Bot.Bot
             FinishRace();
         }
 
+        [Obsolete]
         private void FinishRace()
         { 
             IWebElement inputTextbox = webDriver.FindElement(By.XPath(XPaths.inputTextbox));
@@ -60,6 +56,7 @@ namespace Typeracer_Bot.Bot
                     inputTextbox.Click();
                 }
                 catch (ElementNotInteractableException) { }
+                catch (UnhandledAlertException) { }
             }
             else
             {
@@ -70,8 +67,27 @@ namespace Typeracer_Bot.Bot
                     inputTextbox.Click();
                 }
                 catch (WebDriverTimeoutException) { }
+                catch (UnhandledAlertException) { }
             }
             Thread.Sleep(300);
+            if (Configuration.autorace)
+            {
+                try
+                {
+                    webDriver.FindElement(By.ClassName("raceAgainLink")).Click();
+                    if (!accountPopupClosed)
+                    {
+                        try
+                        {
+                            var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(1));
+                            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[text()='No thanks :(']"))).Click();
+                            accountPopupClosed =true;
+                        }
+                        catch (WebDriverTimeoutException) { }
+                    }
+                }
+                catch (UnhandledAlertException) { }
+            }
             WaitForRaceStart();
         }
 
