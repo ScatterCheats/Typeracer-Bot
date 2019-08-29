@@ -31,7 +31,8 @@
             this.enabledCB = new System.Windows.Forms.CheckBox();
             this.wpmNup = new System.Windows.Forms.NumericUpDown();
             this.infoLabel1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.randomizeCB = new System.Windows.Forms.CheckBox();
+            this.instantModeCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.wpmNup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // 
             // wpmNup
             // 
-            this.wpmNup.Location = new System.Drawing.Point(111, 35);
+            this.wpmNup.Location = new System.Drawing.Point(111, 59);
             this.wpmNup.Maximum = new decimal(new int[] {
             200,
             0,
@@ -71,28 +72,40 @@
             // infoLabel1
             // 
             this.infoLabel1.AutoSize = true;
-            this.infoLabel1.Location = new System.Drawing.Point(12, 37);
+            this.infoLabel1.Location = new System.Drawing.Point(12, 61);
             this.infoLabel1.Name = "infoLabel1";
             this.infoLabel1.Size = new System.Drawing.Size(93, 13);
             this.infoLabel1.TabIndex = 2;
             this.infoLabel1.Text = "Words per minute:";
             // 
-            // checkBox1
+            // randomizeCB
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(81, 71);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(79, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Randomize";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.randomizeCB.AutoSize = true;
+            this.randomizeCB.Location = new System.Drawing.Point(81, 94);
+            this.randomizeCB.Name = "randomizeCB";
+            this.randomizeCB.Size = new System.Drawing.Size(79, 17);
+            this.randomizeCB.TabIndex = 3;
+            this.randomizeCB.Text = "Randomize";
+            this.randomizeCB.UseVisualStyleBackColor = true;
+            // 
+            // instantModeCB
+            // 
+            this.instantModeCB.AutoSize = true;
+            this.instantModeCB.Location = new System.Drawing.Point(81, 35);
+            this.instantModeCB.Name = "instantModeCB";
+            this.instantModeCB.Size = new System.Drawing.Size(88, 17);
+            this.instantModeCB.TabIndex = 4;
+            this.instantModeCB.Text = "Instant Mode";
+            this.instantModeCB.UseVisualStyleBackColor = true;
+            this.instantModeCB.CheckedChanged += new System.EventHandler(this.InstantModeCB_CheckedChanged);
             // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 103);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(242, 123);
+            this.Controls.Add(this.instantModeCB);
+            this.Controls.Add(this.randomizeCB);
             this.Controls.Add(this.infoLabel1);
             this.Controls.Add(this.wpmNup);
             this.Controls.Add(this.enabledCB);
@@ -114,7 +127,8 @@
         private System.Windows.Forms.CheckBox enabledCB;
         private System.Windows.Forms.NumericUpDown wpmNup;
         private System.Windows.Forms.Label infoLabel1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox randomizeCB;
+        private System.Windows.Forms.CheckBox instantModeCB;
     }
 }
 

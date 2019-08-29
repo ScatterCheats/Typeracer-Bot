@@ -75,5 +75,23 @@ namespace Typeracer_Bot
                 bothread.Abort();
             }
         }
+
+        private void InstantModeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (instantModeCB.Checked)
+            {
+                infoLabel1.Enabled = false;
+                wpmNup.Enabled = false;
+                randomizeCB.Enabled = false;
+                Configuration.instantMode = true;
+            }
+            else
+            {
+                infoLabel1.Enabled = true;
+                wpmNup.Enabled = true;
+                randomizeCB.Enabled = true;
+                Configuration.instantMode = false;
+            }
+        }
     }
 }
