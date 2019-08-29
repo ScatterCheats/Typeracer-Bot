@@ -46,7 +46,16 @@ namespace Typeracer_Bot.Bot
             {
                 try
                 {
-                    inputTextbox.SendKeys(textContainer.Text);
+                    string text = textContainer.Text;
+                    int msDelay;
+                    int cpm = Configuration.wpm * 6; // 1 word = 5 characters
+                    msDelay = (int)Math.Round(60d / cpm * 1000, 0); //60 seconds divided by letters per minute times 1000 for ms
+                    Console.WriteLine();
+                    foreach(char c in text)
+                    {
+                        inputTextbox.SendKeys(c.ToString());
+                        Thread.Sleep(msDelay);
+                    }
                 }
                 catch (ElementNotInteractableException) { }
             }

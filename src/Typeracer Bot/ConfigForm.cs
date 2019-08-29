@@ -33,7 +33,7 @@ namespace Typeracer_Bot
             driverBuilder.HideCommandPromptWindow = true;
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--disable-extensions");
+           // options.AddArgument("--disable-extensions");
             options.AddArgument("--start-maximized");
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
             options.AddExcludedArguments(new List<string>() { "enable-automation" });
@@ -82,16 +82,19 @@ namespace Typeracer_Bot
             {
                 infoLabel1.Enabled = false;
                 wpmNup.Enabled = false;
-                randomizeCB.Enabled = false;
                 Configuration.instantMode = true;
             }
             else
             {
                 infoLabel1.Enabled = true;
                 wpmNup.Enabled = true;
-                randomizeCB.Enabled = true;
                 Configuration.instantMode = false;
             }
+        }
+
+        private void WpmNup_ValueChanged(object sender, EventArgs e)
+        {
+            Configuration.wpm = (int)wpmNup.Value;
         }
     }
 }

@@ -8,12 +8,9 @@ namespace Typeracer_Bot.Variables
 {
     public static class XPaths
       {
-    //    public static string firstLetterPath = "//table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td/div/div/span[1]";
-    //    public static string remainingText = "//table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td/div/div/span[2]";
-        
-        public static string inputTextbox = "//table/tbody/tr[2]/td/table/tbody/tr[2]/td/input";
-        public static string textContainer = "//*[@id=\"gwt-uid-15\"]/table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td/div/div";
 
+        public static string inputTextbox = "//table/tbody/tr[2]/td/table/tbody/tr[2]/td/input";
+        public static string textContainer = "//table[contains(concat(' ', normalize-space(@class), ' '), ' gameView ')]/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td/div/div";
 
     }
 }

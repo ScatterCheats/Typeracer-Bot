@@ -31,7 +31,6 @@
             this.enabledCB = new System.Windows.Forms.CheckBox();
             this.wpmNup = new System.Windows.Forms.NumericUpDown();
             this.infoLabel1 = new System.Windows.Forms.Label();
-            this.randomizeCB = new System.Windows.Forms.CheckBox();
             this.instantModeCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.wpmNup)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +67,7 @@
             0,
             0,
             0});
+            this.wpmNup.ValueChanged += new System.EventHandler(this.WpmNup_ValueChanged);
             // 
             // infoLabel1
             // 
@@ -77,16 +77,6 @@
             this.infoLabel1.Size = new System.Drawing.Size(93, 13);
             this.infoLabel1.TabIndex = 2;
             this.infoLabel1.Text = "Words per minute:";
-            // 
-            // randomizeCB
-            // 
-            this.randomizeCB.AutoSize = true;
-            this.randomizeCB.Location = new System.Drawing.Point(81, 94);
-            this.randomizeCB.Name = "randomizeCB";
-            this.randomizeCB.Size = new System.Drawing.Size(79, 17);
-            this.randomizeCB.TabIndex = 3;
-            this.randomizeCB.Text = "Randomize";
-            this.randomizeCB.UseVisualStyleBackColor = true;
             // 
             // instantModeCB
             // 
@@ -103,9 +93,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 123);
+            this.ClientSize = new System.Drawing.Size(242, 89);
             this.Controls.Add(this.instantModeCB);
-            this.Controls.Add(this.randomizeCB);
             this.Controls.Add(this.infoLabel1);
             this.Controls.Add(this.wpmNup);
             this.Controls.Add(this.enabledCB);
@@ -127,7 +116,6 @@
         private System.Windows.Forms.CheckBox enabledCB;
         private System.Windows.Forms.NumericUpDown wpmNup;
         private System.Windows.Forms.Label infoLabel1;
-        private System.Windows.Forms.CheckBox randomizeCB;
         private System.Windows.Forms.CheckBox instantModeCB;
     }
 }
