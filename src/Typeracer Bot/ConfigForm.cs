@@ -41,8 +41,6 @@ namespace Typeracer_Bot
             }
             catch (ArgumentException)
             {
-               
-
                 options = new ChromeOptions();
             notfound:
                 MessageBox.Show("Chrome not found. Please specify your Google Chrome Path.", "Error", MessageBoxButtons.OK);
