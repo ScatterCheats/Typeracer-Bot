@@ -26,8 +26,6 @@ namespace Typeracer_Bot.Bot
             {
                 var gameStatusLabel = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("gameStatusLabel")));
                 if(!gameStatusLabel.Text.Contains("text below:")){ Thread.Sleep(10); goto retry; }
-               // wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(int.MaxValue));
-                //wait.Until(ExpectedConditions.TextToBePresentInElement(gameStatusLabel, "The race is on! Type the text below:"));
             }
             catch (UnhandledAlertException) { Thread.Sleep(4);  goto retry; }
             FinishRace();
