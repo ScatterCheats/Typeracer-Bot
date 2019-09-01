@@ -25,7 +25,3 @@ Its pretty simple:
 2. Clone the repository
 3. Open the solution and perform a NuGet Package restore
 4. Build
-
-## Known issues
-- Bot doesn't detect game start when logged in
-- App crashes when changing WPM while its running
