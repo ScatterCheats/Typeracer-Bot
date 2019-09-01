@@ -36,6 +36,7 @@ namespace Typeracer_Bot
                 options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
                 options.AddExcludedArguments(new List<string>() { "enable-automation" });
                 options.AddArguments("--disable-extensions");
+                options.AddArguments(@"user-data-dir=C:\Program Data\Typeracer-Bot\profile");
                 options.PageLoadStrategy = PageLoadStrategy.None;
                 chrome = new ChromeDriver(driverBuilder, options);
 
@@ -85,6 +86,7 @@ namespace Typeracer_Bot
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
             options.AddExcludedArguments(new List<string>() { "enable-automation" });
             options.AddArguments("--disable-extensions");
+            options.AddArguments(@"user-data-dir=C:\Program Data\Typeracer-Bot\profile");
             options.PageLoadStrategy = PageLoadStrategy.None;
 
             driverBuilder = ChromeDriverService.CreateDefaultService(Directory.GetCurrentDirectory());

@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
+using System.Windows.Forms;
 using Typeracer_Bot.Variables;
 
 namespace Typeracer_Bot.Bot
@@ -25,7 +26,7 @@ namespace Typeracer_Bot.Bot
             try
             {
                 var gameStatusLabel = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("gameStatusLabel")));
-                if(!gameStatusLabel.Text.Contains("text below:")){ Thread.Sleep(10); goto retry; }
+                if(gameStatusLabel.Text.Contains("about to start") || gameStatusLabel.Text.Contains("Waiting")) { Thread.Sleep(10); goto retry; }
             }
             catch (UnhandledAlertException) { Thread.Sleep(4);  goto retry; }
             FinishRace();
@@ -85,6 +86,7 @@ namespace Typeracer_Bot.Bot
                     }
                 }
                 catch (UnhandledAlertException) { }
+                catch (ElementNotInteractableException) { }
             }
             WaitForRaceStart();
         }
