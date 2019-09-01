@@ -36,42 +36,18 @@ namespace Typeracer_Bot
                 options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
                 options.AddExcludedArguments(new List<string>() { "enable-automation" });
                 options.AddArguments("--disable-extensions");
+                options.AddArguments(@"user-data-dir=C:\Program Data\Typeracer-Bot\profile");
                 options.PageLoadStrategy = PageLoadStrategy.None;
                 chrome = new ChromeDriver(driverBuilder, options);
 
             }
             catch (WebDriverException)
             {
-<<<<<<< HEAD
-                options = new ChromeOptions();
-            notfound:
-                MessageBox.Show("Chrome not found. Please specify your Google Chrome Path.", "Error", MessageBoxButtons.OK);
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Chrome Binary|chrome.exe";
-                ofd.InitialDirectory = "C:\\";
-                if(ofd.ShowDialog() == DialogResult.OK)
-                {
-                    options.BinaryLocation = ofd.FileName;
-                }
-                else
-                {
-                    goto notfound;
-                }
-                options.AddArgument("--start-maximized");
-                options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
-                options.AddExcludedArguments(new List<string>() { "enable-automation" });
-                options.AddArguments("--disable-extensions");
-                options.PageLoadStrategy = PageLoadStrategy.None;
-
-                driverBuilder = ChromeDriverService.CreateDefaultService(Directory.GetCurrentDirectory());
-                driverBuilder.HideCommandPromptWindow = true;
-=======
                 DriverCustomPath();
             }
             catch(ArgumentException)
             {
                 DriverCustomPath();
->>>>>>> c09e11430a65786716058be0be88d07f7610e1c1
             }
             catch
             {
@@ -110,6 +86,7 @@ namespace Typeracer_Bot
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
             options.AddExcludedArguments(new List<string>() { "enable-automation" });
             options.AddArguments("--disable-extensions");
+            options.AddArguments(@"user-data-dir=C:\Program Data\Typeracer-Bot\profile");
             options.PageLoadStrategy = PageLoadStrategy.None;
 
             driverBuilder = ChromeDriverService.CreateDefaultService(Directory.GetCurrentDirectory());
